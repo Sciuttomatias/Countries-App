@@ -30,10 +30,15 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Pokemon } = sequelize.models;
+const { Country, Activity } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
+
+Country.belongsToMany(Activity, {through: "country_activity"});       // Esto me esta creando la tabla intermedia?
+Activity.belongsToMany(Country, {through: "country_activity"});       // ¿Cómo funciona la creación de las keys?
+
+// APENAS SE INICE EL SERVIDOR, NO NECESITO NADA ¿ NO ?
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
