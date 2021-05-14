@@ -1,7 +1,9 @@
 require('dotenv').config();
-const { Sequelize } = require('sequelize');
+const { Sequelize, Op } = require('sequelize');
+const { COUNTRIES_URL } = require('../constants');
 const fs = require('fs');
 const path = require('path');
+const axios = require('axios');
 const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
@@ -38,7 +40,34 @@ const { Country, Activity } = sequelize.models;
 Country.belongsToMany(Activity, {through: "country_activity"});       // Esto me esta creando la tabla intermedia?
 Activity.belongsToMany(Country, {through: "country_activity"});       // ¿Cómo funciona la creación de las keys?
 
-// APENAS SE INICE EL SERVIDOR, NO NECESITO NADA ¿ NO ?
+// APENAS SE INICIA EL SERVIDOR. AGREGO TOODS LOS COUNTRIES A MI DB
+
+try{
+  axios.get(COUNTRIES_URL)
+  .then((result) => {
+      let countries = [];
+      for(let i = 0; i < result.data.length; i++){
+          let country = {
+              image : result.data[i].flag,
+              name : result.data[i].name,
+              id: result.data[i].alpha3Code,
+              continent: result.data[i].region,
+              capital: result.data[i].capital,
+              subregion: result.data[i].subregion,
+              area: result.data[i].area,
+              population: result.data[i].population
+          }
+          countries.push(country);
+      }
+      Country.bulkCreate(countries)
+      .then((response) => {
+          console.log("Se inyectaron los countries a mi Base de Datos!");
+      })
+  })
+
+} catch (e){
+  console.log("No se pudo realizar la petición HTTP correctamente.." + e)
+}
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

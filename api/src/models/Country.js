@@ -6,14 +6,11 @@ module.exports = (sequelize) => {
   sequelize.define('country', {
     id: {
       type: DataTypes.STRING(3),      // ¿ ESTA BIEN ESTO PARA EL CÓDIGO DE 3 LETRAS ? EN LA API APARECE COMO "alpha3Code"
+      primaryKey: true,
       allowNull: false,
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
-    },
-    image: {
-      type: DataTypes.STRING,   // EN LA API APARECE COMO "flag"
       allowNull: false,
     },
     continent: {              // EN LA API ÉSTO ESTÁ COMO "region"
@@ -32,6 +29,10 @@ module.exports = (sequelize) => {
     },
     population: {
       type: DataTypes.INTEGER
+    },
+    image: {
+      type: DataTypes.STRING,   // EN LA API APARECE COMO "flag"
+      allowNull: false,
     }
   });
 };

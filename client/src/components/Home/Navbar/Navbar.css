@@ -1,0 +1,48 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+    background-color: lightskyblue;
+}
+
+.logo {
+    width: 20%;
+    cursor: pointer;
+    
+}
+
+.logo-link {
+    cursor: pointer;
+    
+}
+/* 
+.about { 
+
+} */
+.nav-links {
+    text-decoration: none;
+    list-style: none;
+
+}
+
+li {
+    text-decoration: none;
+}
+
+a {
+    font-weight: 300;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    padding-right: 150px;
+}
+
+.nav-links li {
+    display: inline-block;
+    padding: 0px 20px;
+    text-decoration: none;
+}
