@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER     // ¿ PUEDO PONER TINYINT ? TIENE QUE SER ENTRE 1 Y 5..
       },
     duration: {
-        type: DataTypes.FLOAT       // ¿ QUÉ FORMATO TIENE LA DURACIÓN ?
+        type: DataTypes.TEXT       // ¿ QUÉ FORMATO TIENE LA DURACIÓN ?
     },
     season: {
         type: DataTypes.STRING

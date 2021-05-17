@@ -7,7 +7,7 @@ const addActivity = async (req,res,next) => {
         difficulty,
         duration,
         season,
-        countries } = req.body; 
+        countries } = req.body;
     try {
         const createdActivity = await Activity.create({
             name, 

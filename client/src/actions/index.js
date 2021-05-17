@@ -41,9 +41,9 @@ export function getCountryByName(name) {            // VER DONDE LE PASAN EFECTI
     }
 }
 
-export const addActivity = () => async (dispatch) => {  // ¿ LE PASO ALGO COMO PARÁMETRO ?
+export const addActivity = (activity) => async (dispatch) => {  // ¿ LE PASO ALGO COMO PARÁMETRO ?
     try{
-       const res = await axios.post("http://localhost:3001/activity");
+       const res = await axios.post("http://localhost:3001/activity", activity)
        dispatch({                                       // ACÁ SE AGREGA UN DISPATCH PORQUE TENGO ALGO ASINCRÓNICO (EL AXIOS.POST)
         type: "ADD_ACTIVITY",
         payload: res.data                               // ¿ EN EL POST TAMBIEN ES NECESARIO EL .DATA (POR AXIOS) ?
@@ -52,3 +52,7 @@ export const addActivity = () => async (dispatch) => {  // ¿ LE PASO ALGO COMO 
         console.log(e);
     }
 }
+
+// export const addActivity = () => {  // ¿ LE PASO ALGO COMO PARÁMETRO ?
+//     console.log("Se ejecuto la action....")
+// }

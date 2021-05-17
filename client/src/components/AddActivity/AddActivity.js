@@ -13,7 +13,8 @@ function AddActivity() {
   // ¿ ESTA BIEN SI DEFINO UN ESTADO LOCAL QUE SEA UN OBJETO, LO POPULO CON LOS DATOS QUE LLENA EL USER EN EL FORM, 
   // Y DESPUES PUSHEO ESE OBJETO AL ACTIVITIES [] QUE TENGO EN EL STORE DE REDUX ?
 
-  const [activity, setActivity] = useState({ name: "", difficulty: 0, duration: 0, season: "" });
+  const [activity, setActivity] = useState({ name: "", difficulty: 0, duration: 0, season: "", countries: [] });
+  // const [moreCountries, setMoreCountries] = useState(false);
   const dispatch = useDispatch();
 
   // ME TRAIGO LOS COUNTRIES PARA PODER USARLOS EN EL DROPDOWN MENU Y QUE EL USER PUEDA ELEGIR DE AHI LOS PAISES A AGREGAR
@@ -37,28 +38,30 @@ function AddActivity() {
   // FALTA ORDENARLOS ALFABETICAMENTE..
   const dropdownMenu = [];
   for(const country of countries){
-    dropdownMenu.push(<option key={country.id} value={country.name}>{country.name}</option>)
+    dropdownMenu.push(<option key={country.id} value={country.id}>{country.name}</option>)
   }
 
   const addCountries = () => {
     // ACA VOY A TRABAJR UNA FUNCIÓN QUE LE PERMITA AL USUARIO SEGUIR AGRAGANDO COUNTRIES
-    // ( OTRO DROPDOWN MENU, IGUAL AL ANTERIOR, PARA QIE SIGA AGREGANDO MÁS )
+    // ( OTRO DROPDOWN MENU, IGUAL AL ANTERIOR, PARA QUE SIGA AGREGANDO MÁS )
+    
+
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addActivity(activity); // ¿ QUÉ LE PASO COMO PARÁMETRO ? ¿ CÓMO FUNCIONA ESTA ACTION ?
-    alert("Activity added succesfully!")
+    dispatch(addActivity(activity)); // 
   }
 
   const handleChange = (e) => {
+    
     setActivity({
       ...activity,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value   // ¿ Qué hace exactamente esta linea ? ¿ Cómo trabajo con el id de los paises (COL, ARG, CAN) ?
     })
   }
 
-  // ¿ HACEN FALTA LAS KEYS EN LOS ELEMNENTOS DE MI FORM ?
+  // ¿ HACEN FALTA LAS KEYS EN LOS ELEMENTOS DE MI FORM ?
 
   // https://es.reactjs.org/docs/forms.html   <---- FORMS EN REACT
 
@@ -90,7 +93,7 @@ function AddActivity() {
             </div>
             <div id="form-countries" className="form-countries">
               <label>Choose a country </label>
-              <select id="country" name="country" onChange={handleChange}>
+              <select multiple size="5" value={activity.countries} id="countries" name="countries[]" onChange={handleChange}>
                 {dropdownMenu}
               </select>
               <button type="button" onClick={addCountries}>Choose more countries!</button>

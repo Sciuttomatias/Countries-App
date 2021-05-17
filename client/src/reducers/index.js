@@ -7,6 +7,7 @@ const initialState = {                  // ¿ CÓMO ARMO MI INITIAL STATE ? ¿ Q
 function rootReducer(state = initialState, action) {        // EL ESTADO DEFAULT ES EL INITIAL STATE
     // DENTRO DE LAS ACTION, EL PAYLOAD ES OPTATIVO, EL TYPE ES OBLIGATORIO!
     if (action.type === "ADD_ACTIVITY") {
+        console.log(action.payload)
         return {
           ...state,
           activities: state.activities.concat(action.payload)  // ¿ A CORREGIR ?
