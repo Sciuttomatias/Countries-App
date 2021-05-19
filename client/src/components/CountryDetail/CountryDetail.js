@@ -37,11 +37,11 @@ function CountryDetail() {
           <Navbar />
         <h1>Country Detail</h1>
         <ul>
-            <img className="flag" src={countryDetail.image} alt="Image not found"/>
+            <img className="detail-flag" src={countryDetail.image} alt="Image not found"/>
             <h2>{countryDetail.name}</h2>
             <h3>{countryDetail.id}</h3>
             <h3>{countryDetail.continent}, {countryDetail.subregion}</h3>
-            <div>
+            <div className="detail-activities">
             {
                 countryDetail.activities && countryDetail.activities.map(activity => {
                 return (

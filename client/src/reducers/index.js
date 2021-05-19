@@ -1,22 +1,22 @@
-const initialState = {                  // ¿ CÓMO ARMO MI INITIAL STATE ? ¿ QUE COSAS TENGO QUE HACER DENTRO DE MI APP ?
+const initialState = {
     countries: [],
+    page: 1,
     countryDetail : {},
-    activities: []        // Un array, que dentro va a tener muchos objetos, que son las distintas actividades que va agregando el usuario
+    activities: []
 };
 
-function rootReducer(state = initialState, action) {        // EL ESTADO DEFAULT ES EL INITIAL STATE
+function rootReducer(state = initialState, action) {
     // DENTRO DE LAS ACTION, EL PAYLOAD ES OPTATIVO, EL TYPE ES OBLIGATORIO!
     if (action.type === "ADD_ACTIVITY") {
-        console.log(action.payload)
         return {
           ...state,
-          activities: state.activities.concat(action.payload)  // ¿ A CORREGIR ?
+          activities: state.activities.concat(action.payload)
         }
     }
     if (action.type === "GET_COUNTRIES") {
         return {
           ...state,
-          countries: action.payload             // TENGO QUE VER CÓMO ME LLEGAN LOS DATOS DESDE EL BACKEND
+          countries: action.payload
         };
     }
     if (action.type === "GET_ALL_COUNTRIES") {
@@ -37,6 +37,7 @@ function rootReducer(state = initialState, action) {        // EL ESTADO DEFAULT
             countries: action.payload
         }
     }
+
     
     return state;
   }

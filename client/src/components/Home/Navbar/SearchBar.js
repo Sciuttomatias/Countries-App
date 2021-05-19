@@ -1,5 +1,6 @@
 import { useState} from 'react';
 import { useDispatch} from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getCountryByName} from '../../../actions/index'
 
 function SearchBar() {
@@ -10,7 +11,7 @@ function SearchBar() {
 
   const onSearch = (countrySearched) => { 
     try {
-        dispatch(getCountryByName(countrySearched));  // MEDIANTE EL DISPATCH CAMBIO LO QUE TENGO EL STORE
+        dispatch(getCountryByName(countrySearched));
     } catch(e) {
         console.log(e);
       }
@@ -28,7 +29,8 @@ function SearchBar() {
         value={countrySearched}
         onChange={e => setCountrySearched(e.target.value)}
         />
-      <input type="submit" value="Go!" />
+        <button type="submit">Go!</button>
+        {/* <Link to="/countries/searched"><button>Go!</button></Link> */}
     </form>
   );
 }

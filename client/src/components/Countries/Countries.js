@@ -4,8 +4,9 @@ import {useEffect, useState} from 'react';
 import './Countries.css';
 
 
-function Countries() {
-    const countries = useSelector(store => store.countries);
+function Countries({countries}) {
+    // const countries = useSelector(store => store.countries);
+
     return(
         <div>
             <ul className="Countries-ul">
@@ -17,6 +18,6 @@ function Countries() {
             </ul>
         </div>
     )
-} 
+}
 
 export default Countries;

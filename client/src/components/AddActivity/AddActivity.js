@@ -54,11 +54,17 @@ function AddActivity() {
   }
 
   const handleChange = (e) => {
-    
-    setActivity({
-      ...activity,
-      [e.target.name]: e.target.value   // ¿ Qué hace exactamente esta linea ? ¿ Cómo trabajo con el id de los paises (COL, ARG, CAN) ?
-    })
+    if(e.target.name === 'countries'){
+      setActivity({
+        ...activity,
+        [e.target.name]: [...activity.countries, e.target.value]
+      })
+    } else {
+      setActivity({
+        ...activity,
+        [e.target.name]: e.target.value   // ¿ Qué hace exactamente esta linea ? ¿ Cómo trabajo con el id de los paises (COL, ARG, CAN) ?
+      })
+    }
   }
 
   // ¿ HACEN FALTA LAS KEYS EN LOS ELEMENTOS DE MI FORM ?
@@ -75,8 +81,8 @@ function AddActivity() {
               <input value={activity.name} type="text" name="name" onChange={handleChange} required />
             </div>
             <div className="form-difficulty">
-              <label>Difficulty (beetween 1 and 5) </label>
-              <input value={activity.difficulty} type="number" id="Difficulty" name="difficulty" min="1" max="5" onChange={handleChange}/>
+              <label>Difficulty (between 1 and 5) </label>
+              <input value={activity.difficulty} type="number" id="Difficulty" name="difficulty" min="1" max="5" placeholder="1" onChange={handleChange}/>
             </div>
             <div className="form-duration">
               <label>Duration </label>
@@ -93,7 +99,7 @@ function AddActivity() {
             </div>
             <div id="form-countries" className="form-countries">
               <label>Choose a country </label>
-              <select multiple size="5" value={activity.countries} id="countries" name="countries[]" onChange={handleChange}>
+              <select multiple size="5" value={activity.countries} id="countries" name="countries" onChange={handleChange}>
                 {dropdownMenu}
               </select>
               <button type="button" onClick={addCountries}>Choose more countries!</button>

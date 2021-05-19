@@ -1,0 +1,17 @@
+.pagination {
+  display: flex;
+  overflow-wrap: normal;
+  justify-content: center;
+  
+  }
+  
+  .pagination a {
+    
+  }
+
+  .pagination-number {
+    font-weight:bolder;
+    color:lightskyblue;
+    display: flex;
+    justify-content: space-between;
+  }

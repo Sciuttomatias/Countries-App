@@ -9,13 +9,13 @@ const addActivity = async (req,res,next) => {
         season,
         countries } = req.body;
     try {
-        const createdActivity = await Activity.create({
+        const createdActivity = await Activity.create({     // ¿ lo hago com un findOrCreate ?
             name, 
             difficulty, 
             duration, 
             season
         });
-        createdActivity.setCountries(countries) //   LE AGREGO LOS GENEROS MEDIANTE ESTE SETTER PARA CONECTAR LAS DOS TABLAS
+        createdActivity.setCountries(countries)     // ¿ lo hago con un add ?
         return res.send(createdActivity);
 
     } catch (error) {

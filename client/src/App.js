@@ -13,6 +13,7 @@ function App() {
       <Route exact path="/" component={Landing}/>
       <Route path='/countries' component={Navbar}/>
       <Route exact path="/countries" component={Home}/>
+      <Route exact path="/countries/searched" component={Home}/>
       <Route exact path="/countryDetail/:id" component={CountryDetail}/>
       <Route exact path="/addActivity" component={AddActivity}/>
     </div>

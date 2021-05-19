@@ -5,14 +5,13 @@ import axios from 'axios'
 export const getCountries = () => async (dispatch) => {
     try{
        const res = await axios.get("http://localhost:3001/countries");
-       dispatch({                                   // ACÁ SE AGREGA UN DISPATCH PORQUE TENGO ALGO ASINCRÓNICO (EL AXIOS.GET)
+       dispatch({ // ACÁ SE AGREGA UN DISPATCH PORQUE TENGO ALGO ASINCRÓNICO (EL AXIOS.GET)
         type: "GET_COUNTRIES",
         payload: res.data
     });
     } catch (e){
         console.log(e);
-    }                                
-       
+    }
 }
 
 
@@ -29,7 +28,7 @@ export const getCountryById = (id) => async (dispatch) => {
 }
 
 
-export function getCountryByName(name) {            // VER DONDE LE PASAN EFECTIVAMENTE EL NAME
+export const getCountryByName = (name) => {
     return function(dispatch) {
         return axios.get("http://localhost:3001/countries?name=" + name) 
         .then(countries => {
