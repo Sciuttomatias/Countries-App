@@ -74,6 +74,7 @@ function AddActivity() {
   return (
     <div>
       <Navbar />
+      
         <form className="form" onSubmit={(e) => handleSubmit(e)}>
           <fieldset>
             <div className="form-name">

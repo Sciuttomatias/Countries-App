@@ -10,19 +10,15 @@ function ThingsToDo () {
     const countries = useSelector(store => store.countries);
     
     return (
-
-        <li className="dropdown-submenu">
-              <a href="#" className="dropbtn">Things to do</a>
-              <div className="dropdown-submenu-content">
-                {
-                    countries && countries.map(country => {
-                        return <a href="#">{country.id}</a>
-                    })
-                }
-              </div>
-            </li>
+        <li className="menu">
+            <a href="#">Things to do</a>
+            <ul className="submenu">
+                <li>Article #1</li>
+                <li>Article #2</li>
+                <li>Article #3</li>
+                <li>Article #4</li>
+            </ul>
+      </li>
     );
 
 };
-
-export default ThingsToDo;

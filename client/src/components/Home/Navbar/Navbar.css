@@ -14,16 +14,22 @@ header {
 
 .logo-link {
     cursor: pointer;
-    
 }
 /* 
 .about { 
 
 } */
-.nav-links {
+.mainMenu {
     text-decoration: none;
     list-style: none;
+    list-style: none;
+    padding-right: 150px;
+}
 
+.mainMenu li {
+    display: inline-block;
+    padding: 0px 20px;
+    text-decoration: none;
 }
 
 li {
@@ -33,17 +39,6 @@ li {
 a {
     font-weight: 300;
     font-size: 16px;
-    text-decoration: none;
-}
-
-.nav-links {
-    list-style: none;
-    padding-right: 150px;
-}
-
-.nav-links li {
-    display: inline-block;
-    padding: 0px 20px;
     text-decoration: none;
 }
 
@@ -62,33 +57,38 @@ a {
     display: inline-block;
   }
   
-  /* Dropdown Content (Hidden by Default) */
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  /* Links inside the dropdown */
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
+
   
   /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {background-color: #f1f1f1}
+  .subMenu a:hover {background-color: #f1f1f1}
   
   /* Show the dropdown menu on hover */
-  .dropdown:hover .dropdown-content {
+  .dropdown:hover .subMenu,nav .subMenu>li:hover>.superSubMenu {
     display: block;
   }
   
   /* Change the background color of the dropdown button when the dropdown content is shown */
   .dropdown:hover .dropbtn {
     background-color: lightskyblue;
+  }
+
+  .dropdown-submenu {
+    display: inline-block;
+  }
+
+  nav .subMenu,nav .superSubMenu {
+    position: absolute;
+    display: none;
+  }
+
+  nav .subMenu li {
+    position: relative;
+    border-top: 1px solid #575f6a;
+    border-bottom: 1px solid #575f6a;
+  }
+
+  nav .superSubMenu {
+    top: 0;
+    right: 0;
+    transform: translate(100%, 0);
   }

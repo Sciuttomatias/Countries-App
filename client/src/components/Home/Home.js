@@ -1,11 +1,9 @@
-import { Link } from 'react-router-dom';
-import './Home.css';
 import {useSelector, useDispatch} from 'react-redux';
 import {useEffect, useState} from 'react';
-import { useParams } from 'react-router';
 import {getCountries} from '../../actions'
 import Countries from '../Countries/Countries';
 import Pagination from './Pagination'
+import './Home.css';
 
 function Home() {
 
@@ -20,8 +18,7 @@ function Home() {
 
     useEffect(() => {
         console.log("Se montó")
-        fetchData()   // ACÁ YA TENGO LOS DATOS GUARDADOS EN REDUX
-        // setLocalCountries(countries)
+        fetchData()
         return () => {
             console.log("Se desmontó");
         }

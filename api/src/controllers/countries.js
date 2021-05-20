@@ -10,8 +10,13 @@ const getCountries = (req, res, next) => {
         try {
             Country.findAll({ 
                 include: Activity,
+                // where: {
+                //     continent: "Africa"
+                // },
+                // order: [
+                //     ["name", "DESC"]
+                // ]
                 // limit: 10,
-                // order: 'follower DESC'       ¿Voy a usar este tipo de cosas para el filtrado?
             })
             .then((result) => {
                 let countries = [];
