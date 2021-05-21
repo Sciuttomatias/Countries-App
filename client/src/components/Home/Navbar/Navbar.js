@@ -1,19 +1,36 @@
 import { NavLink } from 'react-router-dom';
 import SearchBar from './SearchBar';
-import {useSelector} from 'react-redux';
-
+import {useSelector, useDispatch} from 'react-redux';
+import {useEffect, useState} from 'react';
+import {getCountriesByContinent, getCountriesByActivity} from '../../../actions/index'
 import './Navbar.css';
+
 
 function Navbar({onSearch}) {
   
     const countries = useSelector(store => store.countries);
 
+    const activities = useSelector(store => store.activities);
+
+    const dispatch = useDispatch();
+
+    // useEffect(() => {
+    //   console.log("Se montó");
+    //   fetchData()
+    //   return () => {
+    //       console.log("Se desmontó");
+    //   }
+    // }, []);
 
     const onClick = (e) => {
-      const continent = e.target.value;
+      const value = e.target.value;
+      if(value === "Africa" || value === "Americas" || value === "Asia" || value === "Europe" || value === "Oceania"|| value === "Polar"){
+          dispatch(getCountriesByContinent(value));
+      } else {
+        console.log("Quiere filtrar por actividad " + value);
+        dispatch(getCountriesByActivity(value))
+      }
     }
-
-
 
 
     return (
@@ -28,19 +45,21 @@ function Navbar({onSearch}) {
               <ul className="subMenu">
                 <li><a href="#">Things to do</a>
                   <ul className="superSubMenu">
-                    {}
-                    {/* <li><a href="#">Activity 1</a></li>
-                    <li><a href="#">Activity 2</a></li> */}
+                    {
+                      activities && activities.map(activity =>{
+                        return <li><button key={activity.id} value={activity.name} onClick={(e)=>onClick(e)}>{activity.name}</button></li>
+                      })
+                    }
                   </ul>
                 </li>
                 <li><a href="#">Continent</a>
                   <ul className="superSubMenu">
-                      <li><button value="Africa" onClick={(e)=>onClick(e)}>Africa</button></li>
-                      <li><button value="Americas" onClick={(e)=>onClick(e)}>America</button></li>
-                      <li><button value="Asia" onClick={(e)=>onClick(e)}>Asia</button></li>
-                      <li><button value="Europe" onClick={(e)=>onClick(e)}>Europe</button></li>
-                      <li><button value="Oceania" onClick={(e)=>onClick(e)}>Oceania</button></li>
-                      <li><button value="Polar" onClick={(e)=>onClick(e)}>Polar</button></li>
+                      <li><button key={1}value="Africa" onClick={(e)=>onClick(e)}>Africa</button></li>
+                      <li><button key={2}value="Americas" onClick={(e)=>onClick(e)}>America</button></li>
+                      <li><button key={3}value="Asia" onClick={(e)=>onClick(e)}>Asia</button></li>
+                      <li><button key={4}value="Europe" onClick={(e)=>onClick(e)}>Europe</button></li>
+                      <li><button key={5}value="Oceania" onClick={(e)=>onClick(e)}>Oceania</button></li>
+                      <li><button key={6}value="Polar" onClick={(e)=>onClick(e)}>Polar</button></li>
                     </ul>
                 </li>
               </ul>
@@ -56,6 +75,20 @@ function Navbar({onSearch}) {
             </li>
           </ul>
         </nav>
+
+
+
+        {/* <div>
+          <ul>
+            {
+              activities && activities.map(activity =>)
+            }
+          </ul>
+        </div> */}
+
+
+
+
         <SearchBar onSearch={onSearch}/>
         
       </header>

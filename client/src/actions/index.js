@@ -5,6 +5,7 @@ import axios from 'axios'
 export const getCountries = () => async (dispatch) => {
     try{
        const res = await axios.get("http://localhost:3001/countries");
+       
        dispatch({ // ACÁ SE AGREGA UN DISPATCH PORQUE TENGO ALGO ASINCRÓNICO (EL AXIOS.GET)
         type: "GET_COUNTRIES",
         payload: res.data
@@ -14,6 +15,33 @@ export const getCountries = () => async (dispatch) => {
     }
 }
 
+//console.log(res.data.filter(x => x.continent === "Africa")[6].name);
+
+
+export const getCountriesByContinent = (continent) => async (dispatch) => {
+    try{
+       const res = await axios.get("http://localhost:3001/countries");
+       dispatch({ // ACÁ SE AGREGA UN DISPATCH PORQUE TENGO ALGO ASINCRÓNICO (EL AXIOS.GET)
+        type: "GET_COUNTRIES_BY_CONTINENT",
+        payload: res.data.filter(x => x.continent === continent)
+    });
+    } catch (e){
+        console.log(e);
+    }
+}
+
+export const getCountriesByActivity = (activity) => async (dispatch) => {
+    try{
+       const res = await axios.get("http://localhost:3001/countries");
+       console.table(res.data[1]);
+       dispatch({ // ACÁ SE AGREGA UN DISPATCH PORQUE TENGO ALGO ASINCRÓNICO (EL AXIOS.GET)
+        type: "GET_COUNTRIES_BY_ACTIVITY",
+        payload: res.data.filter(x => x.activities === activity)        // ALGO ESTA MAL ACÁ !!!!
+    });
+    } catch (e){
+        console.log(e);
+    }
+}
 
 export const getCountryById = (id) => async (dispatch) => {
     try{
@@ -51,7 +79,3 @@ export const addActivity = (activity) => async (dispatch) => {  // ¿ LE PASO AL
         console.log(e);
     }
 }
-
-// export const addActivity = () => {  // ¿ LE PASO ALGO COMO PARÁMETRO ?
-//     console.log("Se ejecuto la action....")
-// }

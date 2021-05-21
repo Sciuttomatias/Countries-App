@@ -9,27 +9,18 @@ const getCountries = (req, res, next) => {
     if(!req.query.name){                    // El usuario busca todos los countries
         try {
             Country.findAll({ 
-                include: Activity,
-                // where: {
-                //     continent: "Africa"
-                // },
-                // order: [
-                //     ["name", "DESC"]
-                // ]
-                // limit: 10,
+                include: {model: Activity}
             })
             .then((result) => {
+                // console.log("Probando.." + result)
                 let countries = [];
                 for(let i = 0; i < result.length; i++){
                     let country = {
                         image : result[i].image,
                         name : result[i].name,
                         continent: result[i].continent,
-                        id: result[i].id
-                        // capital: result.data[i].capital,         // -----> NO NECESITO ESTOS DATOS EN ESTA RUTA, ¿NO?
-                        // subregion: result.data[i].subregion,
-                        // area: result.data[i].area,
-                        // population: result.data[i].population
+                        id: result[i].id,
+                        activities: result.activities// ¿ Cómo accedo a las activities ?
                     }
                     countries.push(country);
                 }
@@ -56,11 +47,8 @@ const getCountries = (req, res, next) => {
                         image : result[i].image,
                         name : result[i].name,
                         continent: result[i].continent,
-                        id: result[i].id
-                        // capital: result.data[i].capital,         // -----> NO NECESITO ESTOS DATOS EN ESTA RUTA, ¿NO?
-                        // subregion: result.data[i].subregion,
-                        // area: result.data[i].area,
-                        // population: result.data[i].population
+                        id: result[i].id,
+                        activities: result.activities      // ¿ Cómo accedo a las activities ?
                     }
                     countries.push(country);
                 }
@@ -75,7 +63,7 @@ const getCountries = (req, res, next) => {
 
 
 
-const getCountriesById = (req, res, next ) => {      // Acá tengo que agarrar id por params y hacer un find a mi DB        
+const getCountriesById = (req, res, next ) => {
     try {
         let queryId = req.params.id.toUpperCase();
         Country.findOne({ 

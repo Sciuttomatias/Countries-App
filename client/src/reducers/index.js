@@ -19,7 +19,13 @@ function rootReducer(state = initialState, action) {
           countries: action.payload
         };
     }
-    if (action.type === "GET_ALL_COUNTRIES") {
+    if (action.type === "GET_COUNTRIES_BY_CONTINENT") {
+        return {
+          ...state,
+          countries: action.payload
+        };
+    }
+    if (action.type === "GET_COUNTRIES_BY_ACTIVITY") {
         return {
           ...state,
           countries: action.payload
