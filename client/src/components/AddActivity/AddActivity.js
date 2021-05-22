@@ -5,20 +5,19 @@ import { addActivity, getCountries } from '../../actions/index'
 import Navbar from '../Home/Navbar/Navbar';
 import './AddActivity.css';
 
+// ¿ COMO HAGO PARA USAR EL ESTADO DE REDUX Y NO UNO LOCAL COMO ESTOY HACIENDO ACÁ?
+// EL PROBLEMA QUE TENGO ES QUE SE ME RESETEA EL ESTADO CADA VEZ QUE EL USUARIO ENTRA A ESTE COMPONENTE
+
 function AddActivity() {
 
-  const countries = useSelector(store => store.countries)
-  // ACTIVITIES ES UN ARRAY, AL QUE LE VAMOS A IR SUMANDO OBJETOS QUE VAN A SER LAS ACTIVITIES (ACTIVITIES LO TENGO EN EL STORE)
-  const activities = useSelector(store => store.activities);
-  // ¿ ESTA BIEN SI DEFINO UN ESTADO LOCAL QUE SEA UN OBJETO, LO POPULO CON LOS DATOS QUE LLENA EL USER EN EL FORM, 
-  // Y DESPUES PUSHEO ESE OBJETO AL ACTIVITIES [] QUE TENGO EN EL STORE DE REDUX ?
-
+  
   const [activity, setActivity] = useState({ name: "", difficulty: 0, duration: 0, season: "", countries: [] });
-  // const [moreCountries, setMoreCountries] = useState(false);
+  
   const dispatch = useDispatch();
-
-  // ME TRAIGO LOS COUNTRIES PARA PODER USARLOS EN EL DROPDOWN MENU Y QUE EL USER PUEDA ELEGIR DE AHI LOS PAISES A AGREGAR
-  const fetchCountries = () => {
+  
+  const countries = useSelector(store => store.countries);
+  
+  const fetchCountries = () => { // Para poder usar loc countries en el dropdown menu..
     try{
       dispatch(getCountries());
     } catch(e){
@@ -40,17 +39,11 @@ function AddActivity() {
   for(const country of countries){
     dropdownMenu.push(<option key={country.id} value={country.id}>{country.name}</option>)
   }
-
-  const addCountries = () => {
-    // ACA VOY A TRABAJR UNA FUNCIÓN QUE LE PERMITA AL USUARIO SEGUIR AGRAGANDO COUNTRIES
-    // ( OTRO DROPDOWN MENU, IGUAL AL ANTERIOR, PARA QUE SIGA AGREGANDO MÁS )
-    
-
-  }
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addActivity(activity)); // 
+    dispatch(addActivity(activity));
   }
 
   const handleChange = (e) => {
@@ -74,7 +67,7 @@ function AddActivity() {
   return (
     <div>
       <Navbar />
-      
+
         <form className="form" onSubmit={(e) => handleSubmit(e)}>
           <fieldset>
             <div className="form-name">
@@ -103,7 +96,6 @@ function AddActivity() {
               <select multiple size="5" value={activity.countries} id="countries" name="countries" onChange={handleChange}>
                 {dropdownMenu}
               </select>
-              <button type="button" onClick={addCountries}>Choose more countries!</button>
             </div>
             <button className="form-btn" type="submit">Add Activity!</button>
           </fieldset>

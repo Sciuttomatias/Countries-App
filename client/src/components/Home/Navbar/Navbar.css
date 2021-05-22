@@ -79,12 +79,12 @@ a {
   nav .subMenu,nav .superSubMenu {
     position: absolute;
     display: none;
+    left: 0;
   }
 
   nav .subMenu li {
     position: relative;
-    border-top: 1px solid #575f6a;
-    border-bottom: 1px solid #575f6a;
+    top: 13px;
   }
 
   nav .superSubMenu {

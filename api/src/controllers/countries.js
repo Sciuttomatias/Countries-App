@@ -12,7 +12,7 @@ const getCountries = (req, res, next) => {
                 include: {model: Activity}
             })
             .then((result) => {
-                // console.log("Probando.." + result)
+                //
                 let countries = [];
                 for(let i = 0; i < result.length; i++){
                     let country = {
@@ -20,11 +20,11 @@ const getCountries = (req, res, next) => {
                         name : result[i].name,
                         continent: result[i].continent,
                         id: result[i].id,
-                        activities: result.activities// ¿ Cómo accedo a las activities ?
+                        activities: result[i].activities // ¿ Cómo accedo a las activities ?
                     }
                     countries.push(country);
                 }
-                
+                console.log(countries[0].activities[0]);    // ESTO FUNCIONA..
                 res.status(200).send(countries);
             })
      
@@ -66,7 +66,7 @@ const getCountries = (req, res, next) => {
 const getCountriesById = (req, res, next ) => {
     try {
         let queryId = req.params.id.toUpperCase();
-        Country.findOne({ 
+        Country.findOne({
             where: {id: queryId},
             include: {model: Activity}
         })

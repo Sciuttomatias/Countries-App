@@ -33,10 +33,11 @@ export const getCountriesByContinent = (continent) => async (dispatch) => {
 export const getCountriesByActivity = (activity) => async (dispatch) => {
     try{
        const res = await axios.get("http://localhost:3001/countries");
-       console.table(res.data[1]);
-       dispatch({ // ACÁ SE AGREGA UN DISPATCH PORQUE TENGO ALGO ASINCRÓNICO (EL AXIOS.GET)
+       console.log("getCountriesByActivity, res.data[0].activities[0].name = " + res.data[0].activities[0].name);
+       dispatch({
         type: "GET_COUNTRIES_BY_ACTIVITY",
-        payload: res.data.filter(x => x.activities === activity)        // ALGO ESTA MAL ACÁ !!!!
+        // payload: res.data.filter(country => country.activities[0])
+        payload : res.data.filter(country => country.activities.length !== 0 && country.activities.find((name) => name === activity))
     });
     } catch (e){
         console.log(e);
@@ -45,7 +46,7 @@ export const getCountriesByActivity = (activity) => async (dispatch) => {
 
 export const getCountryById = (id) => async (dispatch) => {
     try{
-        const res = await axios.get("http://localhost:3001/countries/" + id)
+        const res = await axios.get("http://localhost:3001/countries/" + id);
         dispatch({
             type: "GET_COUNTRY_BY_ID",
             payload: res.data

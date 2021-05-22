@@ -15,7 +15,7 @@ const addActivity = async (req,res,next) => {
             duration, 
             season
         });
-        createdActivity.addCountries(countries)     // ¿ lo hago con un add ?
+        createdActivity.addCountries(countries)     // ¿ lo hago con un add o con un set ?
         return res.send(createdActivity);
 
     } catch (error) {
@@ -26,3 +26,4 @@ const addActivity = async (req,res,next) => {
 module.exports = {
     addActivity
 }
+

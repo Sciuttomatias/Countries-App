@@ -1,9 +1,19 @@
 .form {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     justify-content: space-evenly;
     align-content: space-evenly;
     gap: 40px;
     padding: 90px;
     
+}
+
+
+
+
+.form-countries {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
