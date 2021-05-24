@@ -1,7 +1,9 @@
 import { useState} from 'react';
 import { useDispatch} from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getCountryByName} from '../../../actions/index'
+import { getCountryByName} from '../../../actions/index';
+import './SearchBar.css';
+
 
 function SearchBar() {
 
@@ -22,19 +24,17 @@ function SearchBar() {
         e.preventDefault();
         onSearch(countrySearched);
         setCountrySearched("");
-    }}>
+    }} className="elementsContainer">
       <input
+        className="search"
         type="text"
         placeholder="Search countries.."
         value={countrySearched}
         onChange={e => setCountrySearched(e.target.value)}
         />
-        <button type="submit">Go!</button>
-        {/* <Link to="/countries/searched"><button>Go!</button></Link> */}
+        <button className="btn" type="submit">Go!</button>
     </form>
   );
 }
-
-
 
 export default SearchBar;

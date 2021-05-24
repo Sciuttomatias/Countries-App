@@ -31,6 +31,18 @@ function rootReducer(state = initialState, action) {
           countries: action.payload
         };
     }
+    if (action.type === "GET_COUNTRIES_BY_ALPHABET") {
+        return { 
+            ...state,
+            countries: action.payload
+        }
+    }
+    if (action.type === "GET_COUNTRIES_BY_POPULATION") {
+        return { 
+            ...state,
+            countries: action.payload
+        }
+    }
     if (action.type === "GET_COUNTRY_BY_ID") {
         return { 
             ...state,

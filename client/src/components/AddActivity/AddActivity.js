@@ -26,10 +26,10 @@ function AddActivity() {
   }
 
   useEffect(() => {
-    console.log("Se montó al Detail")
+    console.log("Se montó al Add Activity")
     fetchCountries()
     return () => {
-      console.log("Se desmontó del Detail") // ¿ ACÁ DEBERIA EJECUTAR ALGO ?
+      console.log("Se desmontó del Add Activity")
     }
   }, [])
 

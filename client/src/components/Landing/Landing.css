@@ -1,0 +1,23 @@
+.container {
+    background-repeat: no-repeat;
+    background: url('https://papers.co/wallpaper/papers.co-od09-nature-travel-kit-36-3840x2400-4k-wallpaper.jpg');
+    background-size: 100%;
+    padding: 17.7em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+  
+h1 {
+    color: rgb(96, 156, 247);
+    font-size: 3em;
+}
+
+.text {
+    color: rgb(96, 156, 247);
+    font-size: 1em;
+    font-weight: 300;
+}
+
+
+

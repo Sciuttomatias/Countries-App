@@ -12,7 +12,6 @@ const getCountries = (req, res, next) => {
                 include: {model: Activity}
             })
             .then((result) => {
-                //
                 let countries = [];
                 for(let i = 0; i < result.length; i++){
                     let country = {
@@ -20,11 +19,11 @@ const getCountries = (req, res, next) => {
                         name : result[i].name,
                         continent: result[i].continent,
                         id: result[i].id,
+                        population: result[i].population,
                         activities: result[i].activities // ¿ Cómo accedo a las activities ?
                     }
                     countries.push(country);
                 }
-                console.log(countries[0].activities[0]);    // ESTO FUNCIONA..
                 res.status(200).send(countries);
             })
      
@@ -48,6 +47,7 @@ const getCountries = (req, res, next) => {
                         name : result[i].name,
                         continent: result[i].continent,
                         id: result[i].id,
+                        population: result[i].population,
                         activities: result.activities      // ¿ Cómo accedo a las activities ?
                     }
                     countries.push(country);
@@ -78,6 +78,9 @@ const getCountriesById = (req, res, next ) => {
         console.log("No se pudo realizar la petición HTTP correctamente.." + e);
     }
 }
+
+
+
 
 
 module.exports = {

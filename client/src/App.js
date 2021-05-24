@@ -6,8 +6,6 @@ import Navbar from './components/Home/Navbar/Navbar';
 import CountryDetail from './components/CountryDetail/CountryDetail';
 import AddActivity from './components/AddActivity/AddActivity';
 import {useSelector} from 'react-redux';
-// import './App.css';
-
 
 
 function App() {

@@ -15,9 +15,6 @@ export const getCountries = () => async (dispatch) => {
     }
 }
 
-//console.log(res.data.filter(x => x.continent === "Africa")[6].name);
-
-
 export const getCountriesByContinent = (continent) => async (dispatch) => {
     try{
        const res = await axios.get("http://localhost:3001/countries");
@@ -30,14 +27,72 @@ export const getCountriesByContinent = (continent) => async (dispatch) => {
     }
 }
 
-export const getCountriesByActivity = (activity) => async (dispatch) => {
+export const getCountriesByAlphabet = (order) => async (dispatch) => {
     try{
        const res = await axios.get("http://localhost:3001/countries");
-       console.log("getCountriesByActivity, res.data[0].activities[0].name = " + res.data[0].activities[0].name);
-       dispatch({
+       if(order === "ASC"){
+           dispatch({
+            type: "GET_COUNTRIES_BY_ALPHABET",
+            payload: res.data.sort((a, b) => {
+                if (a.name > b.name) {
+                    return 1;
+                  }
+                  if (a.name < b.name) {
+                    return -1;
+                  }
+                  return 0;
+               })
+            });
+       } else {
+        dispatch({
+            type: "GET_COUNTRIES_BY_ALPHABET", // Ver el caso de "Åland Islands" (unicode)
+            payload: res.data.sort((a, b) => {
+                if (a.name > b.name) {
+                    return -1;
+                  }
+                  if (a.name < b.name) {
+                    return 1;
+                  }
+                  return 0;
+               })
+            });
+       }
+    } catch (e){
+        console.log(e);
+    }
+}
+
+export const getCountriesByPopulation = (order) => async (dispatch) => {
+    try{
+       const res = await axios.get("http://localhost:3001/countries");
+       if(order === "DESC"){
+           dispatch({
+            type: "GET_COUNTRIES_BY_POPULATION",
+            payload: res.data.sort((a, b) => {
+                return a.population - b.population;
+               })
+            });
+       } else {
+        dispatch({
+            type: "GET_COUNTRIES_BY_POPULATION",
+            payload: res.data.sort((a, b) => {
+                return - (a.population - b.population);
+               })
+            });
+       }
+    } catch (e){
+        console.log(e);
+    }
+}
+
+export const getCountriesByActivity = (activity) => async (dispatch) => {
+    try{
+        const res = await axios.get("http://localhost:3001/countries");
+        dispatch({
         type: "GET_COUNTRIES_BY_ACTIVITY",
-        // payload: res.data.filter(country => country.activities[0])
-        payload : res.data.filter(country => country.activities.length !== 0 && country.activities.find((name) => name === activity))
+        payload : res.data.filter(country => {
+            return country.activities.length !== 0 && country.activities.find(obj => obj.name === activity)
+        })
     });
     } catch (e){
         console.log(e);
