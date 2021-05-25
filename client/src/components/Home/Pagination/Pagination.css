@@ -1,0 +1,14 @@
+.pagination {
+    display: inline-block;
+    
+}
+
+
+
+.pagination-number {
+    color: lightskyblue;
+    padding: 5px 12px;
+    text-decoration: none;
+    font-style: italic;
+    font-weight: bold;
+}

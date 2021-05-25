@@ -2,7 +2,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {useEffect, useState} from 'react';
 import {getCountries} from '../../actions'
 import Countries from '../Countries/Countries';
-import Pagination from './Pagination'
+import Pagination from './Pagination/Pagination'
 import Navbar from './Navbar/Navbar'
 import './Home.css';
 
@@ -39,7 +39,7 @@ function Home() {
     return (
         <div className="Home">
             <Navbar activities={activities} countries={currentCountries}/>
-            <h1>Countries</h1>
+            <h1>All around the world</h1>
             <Countries countries={currentCountries}/><br/>
             <Pagination countriesPerPage={countriesPerPage} totalCountries={countries.length} paginate={paginate}/>
         </div>

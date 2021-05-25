@@ -1,15 +1,15 @@
 .container {
     background-repeat: no-repeat;
-    background: url('https://papers.co/wallpaper/papers.co-od09-nature-travel-kit-36-3840x2400-4k-wallpaper.jpg');
+    background: url('../../countries_landing.jpg');
     background-size: 100%;
-    padding: 17.7em;
+    padding: 17.1em;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
   
 h1 {
-    color: rgb(96, 156, 247);
+    color: lightskyblue;
     font-size: 3em;
 }
 
@@ -19,5 +19,13 @@ h1 {
     font-weight: 300;
 }
 
-
+.btn-landing{
+    size: 20px;
+    color: white;
+    background: lightskyblue;
+    border-radius: 5px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    width: 80px;
+    height: 40px;
+}
 

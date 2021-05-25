@@ -2,7 +2,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 10%;
+    padding: 10px 10%;
     background-color: lightskyblue;
 }
 
@@ -21,10 +21,13 @@ header {
 
 } */
 .mainMenu {
-    text-decoration: none;
+  flex-direction: row;
+  align-items: center;
+  padding-right: 310px;
+    /* text-decoration: none;
     list-style: none;
     list-style: none;
-    padding-right: 150px;
+    padding-right: 250px; */
 }
 
 .mainMenu li {

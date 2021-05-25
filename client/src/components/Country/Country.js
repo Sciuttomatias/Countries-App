@@ -11,7 +11,7 @@ function Country ({image, name, continent, id}) {
         <img className="imgCountry" src={image} alt="" />
         <h5 className="country-title">{name}</h5>
         <h5>{continent}</h5>
-        <Link to={`/countryDetail/${id}`}><button>Show Detail</button></Link>
+        <Link to={`/countryDetail/${id}`}><button className="btn-showDetail">Details</button></Link>
     </div>
     );
 

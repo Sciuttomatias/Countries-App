@@ -5,21 +5,19 @@ import Home from './components/Home/Home';
 import Navbar from './components/Home/Navbar/Navbar';
 import CountryDetail from './components/CountryDetail/CountryDetail';
 import AddActivity from './components/AddActivity/AddActivity';
-import {Provider, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 
 
 function App() {
-  // const countries = useSelector(store => store.countries);
+  const countries = useSelector(store => store.countries);
   return (
-    <Provider>
-      <div className="App">
-        <Route exact path="/" component={Landing}/>
-        <Route exact path="/countries" component={Home}/>
-        <Route exact path="/countries/searched" component={Home}/>
-        <Route exact path="/countryDetail/:id" component={CountryDetail}/>
-        <Route exact path="/addActivity" component={AddActivity} countries={countries}/>
-      </div>
-    </Provider>
+    <div className="App">
+      <Route exact path="/" component={Landing}/>
+      <Route exact path="/countries" component={Home}/>
+      <Route exact path="/countries/searched" component={Home}/>
+      <Route exact path="/countryDetail/:id" component={CountryDetail}/>
+      <Route exact path="/addActivity" component={AddActivity} countries={countries}/>
+    </div>
   );
 }
 

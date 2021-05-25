@@ -6,7 +6,7 @@ function Landing() {
     <div className="container">
       <h1>Henry Countries</h1>
         <Link to="/countries">
-            <button className="btn" type="button">Home</button>
+            <button className="btn-landing" type="button">Home</button>
         </Link>
 
     </div>

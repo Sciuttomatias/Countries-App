@@ -1,4 +1,40 @@
-.flag {
-    height: 50px;
-    width: 70px;
+.container-detail {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    
+}
+
+.country-detail {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    justify-content: space-between;
+    /* border: 5px solid lightskyblue; */
+    height: 300px;
+    width: 800px;
+    padding: 100px;
+}
+
+.below-image {
+    align-self: center;
+    justify-content: center;
+    border: 5px solid lightskyblue;
+    padding: 30px;
+    align-items: center;
+    
+}
+
+.name-detail{
+    justify-content: center;
+}
+
+.activities-title {
+    text-decoration: underline;
+}
+
+.img-detail {
+    /* padding-top: 20px; */
+    width: 450px;
+    border-radius: 5px 5px 0 0;
 }

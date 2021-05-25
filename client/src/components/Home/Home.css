@@ -1,17 +1,14 @@
-.pagination {
-  display: flex;
-  overflow-wrap: normal;
-  justify-content: center;
-  
-  }
-  
-  .pagination a {
-    
-  }
+@import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
 
-  .pagination-number {
-    font-weight:bolder;
-    color:lightskyblue;
-    display: flex;
-    justify-content: space-between;
-  }
+.Home {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.h1 {
+  justify-content: center;
+  font-family: 'Oxygen', sans-serif;
+  font-style: italic;
+  font-weight: bold;
+}
