@@ -26,12 +26,12 @@ function Home() {
         }
     }, []);
 
-    // Get current countries
+    // Creo la variable con los países a mostrar por página
     const indexOfLastCountry = currentPage * countriesPerPage;
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
     const currentCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry);
 
-    // Change page
+    // Con esta función trabajo el cambio de página
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber);
     }

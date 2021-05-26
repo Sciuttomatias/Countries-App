@@ -1,14 +1,14 @@
 import { NavLink } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import {useSelector, useDispatch} from 'react-redux';
-import {useEffect, useState} from 'react';
-import {getCountriesByContinent, getCountriesByActivity, getCountriesByAlphabet, getCountriesByPopulation} from '../../../actions/index'
+import { getCountriesByContinent,
+         getCountriesByActivity, 
+         getCountriesByAlphabet, 
+         getCountriesByPopulation } from '../../../actions/index'
 import './Navbar.css';
 
 
 function Navbar({onSearch}) {
-  
-    const countries = useSelector(store => store.countries);
 
     const activities = useSelector(store => store.activities);
 
@@ -38,7 +38,6 @@ function Navbar({onSearch}) {
 
     return (
       <header>
-
         <NavLink to="/countries" activeClassName="logo-link">
           <img className='logo' src="https://hypernoir.com/wp-content/uploads/2020/11/Henry.png" alt="logo"/>
         </NavLink>
@@ -80,12 +79,9 @@ function Navbar({onSearch}) {
             </li>
           </ul>
         </nav>
-
         <SearchBar onSearch={onSearch}/>
-        
       </header>
     );
   }
   
-//<button key={activity.id} value={activity.name} onClick={(e)=> onClick(e)}  
   export default Navbar;

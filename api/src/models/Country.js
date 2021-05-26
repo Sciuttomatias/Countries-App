@@ -1,11 +1,11 @@
 const { DataTypes } = require('sequelize');
-// Exportamos una funcion que define el modelo
-// Luego le injectamos la conexion a sequelize.
+// Exporto una funcion que define el modelo
+// Luego le inyecto la conexion a sequelize
 module.exports = (sequelize) => {
-  // defino el modelo
+  
   sequelize.define('country', {
     id: {
-      type: DataTypes.STRING(3),      // ¿ ESTA BIEN ESTO PARA EL CÓDIGO DE 3 LETRAS ? EN LA API APARECE COMO "alpha3Code"
+      type: DataTypes.STRING(3),
       primaryKey: true,
       allowNull: false,
     },
@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    continent: {              // EN LA API ÉSTO ESTÁ COMO "region"
+    continent: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -31,7 +31,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER
     },
     image: {
-      type: DataTypes.STRING,   // EN LA API APARECE COMO "flag"
+      type: DataTypes.STRING,
       allowNull: false,
     }
   });

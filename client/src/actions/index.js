@@ -1,13 +1,10 @@
 import axios from 'axios'
 
-// CAPAZ TRABAJARLAS CON TRY/CATCH
-
-export const getCountries = () => async (dispatch) => {
+export const addActivity = (activity) => async (dispatch) => {
     try{
-       const res = await axios.get("http://localhost:3001/countries");
-       
-       dispatch({ // ACÁ SE AGREGA UN DISPATCH PORQUE TENGO ALGO ASINCRÓNICO (EL AXIOS.GET)
-        type: "GET_COUNTRIES",
+       const res = await axios.post("http://localhost:3001/activity", activity)
+       dispatch({
+        type: "ADD_ACTIVITY",
         payload: res.data
     });
     } catch (e){
@@ -15,10 +12,46 @@ export const getCountries = () => async (dispatch) => {
     }
 }
 
+export const getCountries = () => async (dispatch) => {
+    try{
+       const res = await axios.get("http://localhost:3001/countries");
+       dispatch({ // Se agrega el dispatch cuando tengo algo asincrónico, 
+        type: "GET_COUNTRIES",// y es para avisarle al reducer que ya tengo los datos y que se encargue de modificar el store
+        payload: res.data
+    });
+    } catch (e){
+        console.log(e);
+    }
+}
+
+export const getCountryByName = (name) => {
+    return function(dispatch) {
+        return axios.get("http://localhost:3001/countries?name=" + name) 
+        .then(countries => {
+            dispatch({
+                type: "GET_COUNTRY_BY_NAME",
+                payload: countries.data
+            });
+        });
+    }
+}
+
+export const getCountryById = (id) => async (dispatch) => {
+    try{
+        const res = await axios.get("http://localhost:3001/countries/" + id);
+        dispatch({
+            type: "GET_COUNTRY_BY_ID",
+            payload: res.data
+        });
+    } catch (e){
+        console.log(e);
+    }                 
+}
+
 export const getCountriesByContinent = (continent) => async (dispatch) => {
     try{
        const res = await axios.get("http://localhost:3001/countries");
-       dispatch({ // ACÁ SE AGREGA UN DISPATCH PORQUE TENGO ALGO ASINCRÓNICO (EL AXIOS.GET)
+       dispatch({
         type: "GET_COUNTRIES_BY_CONTINENT",
         payload: res.data.filter(x => x.continent === continent)
     });
@@ -93,43 +126,6 @@ export const getCountriesByActivity = (activity) => async (dispatch) => {
         payload : res.data.filter(country => {
             return country.activities.length !== 0 && country.activities.find(obj => obj.name === activity)
         })
-    });
-    } catch (e){
-        console.log(e);
-    }
-}
-
-export const getCountryById = (id) => async (dispatch) => {
-    try{
-        const res = await axios.get("http://localhost:3001/countries/" + id);
-        dispatch({
-            type: "GET_COUNTRY_BY_ID",
-            payload: res.data
-        });
-    } catch (e){
-        console.log(e);
-    }                 
-}
-
-
-export const getCountryByName = (name) => {
-    return function(dispatch) {
-        return axios.get("http://localhost:3001/countries?name=" + name) 
-        .then(countries => {
-            dispatch({                              // EL DISPATCH ES PARA AVISARLE AL REDUCER QUE YA TENGO LOS DATOS, Y QUE SE ENCARGUE DE
-                type: "GET_COUNTRY_BY_NAME",        // MODIFICAR EL STORE
-                payload: countries.data
-            });
-        });
-    }
-}
-
-export const addActivity = (activity) => async (dispatch) => {  // ¿ LE PASO ALGO COMO PARÁMETRO ?
-    try{
-       const res = await axios.post("http://localhost:3001/activity", activity)
-       dispatch({                                       // ACÁ SE AGREGA UN DISPATCH PORQUE TENGO ALGO ASINCRÓNICO (EL AXIOS.POST)
-        type: "ADD_ACTIVITY",
-        payload: res.data                               // ¿ EN EL POST TAMBIEN ES NECESARIO EL .DATA (POR AXIOS) ?
     });
     } catch (e){
         console.log(e);

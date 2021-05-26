@@ -4,7 +4,7 @@
     flex-wrap: wrap;
     align-content: center;
     align-items: center;
-    border: 3px solid lightskyblue;
+    border: 3px solid skyblue;
     width: 250px;
     height: 280px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -21,9 +21,7 @@
 .btn-showDetail{
     size: 10px;
     color: white;
-    background: lightskyblue;
-    
-    
+    background: skyblue;
     width: 70px;
     height: 30px;
 }

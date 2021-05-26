@@ -1,18 +1,130 @@
-.form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-content: space-evenly;
-    gap: 40px;
-    padding: 90px;
-    
+body {
+    background-color: rgb(243, 243, 223);
 }
 
+.main-div {
+    display: flex;
+    flex-direction: column;
+}
 
+.main-div h1 {
+    align-self: center;
+}
 
+.main-div h2{
+    align-self: center;
+    color: skyblue;
+}
+
+.main-div h3{
+    align-self: center;
+    color: skyblue;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+    align-self: center;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    border: 4px solid skyblue;
+    width: 35%;
+}
+
+label {
+    text-decoration: underline;
+    text-decoration-color: skyblue;
+    text-decoration-thickness: 0.2em;
+}
+
+.form-name {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-difficulty {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-duration {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-season {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
 
 .form-countries {
     display: flex;
     align-items: center;
     flex-direction: column;
 }
+
+.form-countries .select {
+    align-self: center;
+}
+
+.form-btn {
+    size: 10px;
+    color: white;
+    font-weight: 800;
+    background: skyblue;
+    width: 70px;
+    height: 30px;
+    border-radius: 6px;
+}
+
+select {
+    display: grid;
+    grid-template-areas: "select";
+    align-items: center;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+    outline: none;
+    width: 100%;
+    min-width: 15ch;
+    max-width: 30ch;
+    border: 1px solid var(--select-border);
+    border-radius: 6px;
+    padding: 0.25em 0.5em;
+    font-size: 1.10rem;
+    cursor: pointer;
+    line-height: 1;
+    background-color: #fff;
+    background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+
+}
+
+.select::after {
+    content: "";
+    width: 0.8em;
+    height: 0.5em;
+    background-color: var(--select-arrow);
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+    grid-area: select;
+    justify-self: end;
+  }
+
+:root {
+    --select-border: #777;
+    --select-focus: blue;
+    --select-arrow: var(--select-border);
+  }

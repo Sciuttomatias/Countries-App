@@ -2,10 +2,8 @@ const { Country, Activity } = require('../db');
 require('dotenv').config();
 const { Op } = require('sequelize');
 
-// getCountries
-// Primero me tengo que traer todos los paises a mi DB y luego en la ruta GET /countries debo obtener los primeros 10
-// En /countries tengo que hacer una petición a mi DB y mostrar los primeros 10 paises
-const getCountries = (req, res, next) => {
+
+const getCountries = (req, res) => {
     if(!req.query.name){                    // El usuario busca todos los countries
         try {
             Country.findAll({ 
@@ -28,9 +26,9 @@ const getCountries = (req, res, next) => {
             })
      
         } catch(e){
-            console.log("No se pudo realizar la petición HTTP correctamente..." + e)
+            console.log("No se pudo realizar la petición HTTP correctamente " + e)
         }
-                        // El usuario busca por query.name (/countries?name=gentin ) //
+/*---------------------- El usuario busca por nombre /countries?name=argentina ---------------------*/
     } else {
         
         let queryName = req.query.name;
@@ -48,11 +46,10 @@ const getCountries = (req, res, next) => {
                         continent: result[i].continent,
                         id: result[i].id,
                         population: result[i].population,
-                        activities: result.activities      // ¿ Cómo accedo a las activities ?
+                        activities: result.activities
                     }
                     countries.push(country);
                 }
-                
                 res.status(200).send(countries);
             })
         } catch {
@@ -62,8 +59,7 @@ const getCountries = (req, res, next) => {
 }
 
 
-
-const getCountriesById = (req, res, next ) => {
+const getCountriesById = (req, res) => {
     try {
         let queryId = req.params.id.toUpperCase();
         Country.findOne({
@@ -73,14 +69,10 @@ const getCountriesById = (req, res, next ) => {
         .then((result) => {
             res.status(200).send(result);
         })
-        
         } catch(e){
-        console.log("No se pudo realizar la petición HTTP correctamente.." + e);
+        console.log("No se pudo realizar la petición HTTP correctamente " + e);
     }
 }
-
-
-
 
 
 module.exports = {

@@ -1,12 +1,7 @@
 import Country from '../Country/Country'
-import {useSelector} from 'react-redux';
-import {useEffect, useState} from 'react';
 import './Countries.css';
 
-
 function Countries({countries}) {
-    // const countries = useSelector(store => store.countries);
-
     return(
         <div>
             <ul className="Countries-ul">

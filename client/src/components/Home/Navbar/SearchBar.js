@@ -1,6 +1,5 @@
 import { useState} from 'react';
 import { useDispatch} from 'react-redux';
-import { Link } from 'react-router-dom';
 import { getCountryByName} from '../../../actions/index';
 import './SearchBar.css';
 
@@ -24,9 +23,9 @@ function SearchBar() {
         e.preventDefault();
         onSearch(countrySearched);
         setCountrySearched("");
-    }} className="elementsContainer">
+    }} className="search-container">
       <input
-        className="search"
+        className="input"
         type="text"
         placeholder="Search countries.."
         value={countrySearched}

@@ -1,8 +1,8 @@
 const { DataTypes } = require('sequelize');
-// Exportamos una funcion que define el modelo
-// Luego le injectamos la conexion a sequelize.
+// Exporto una funcion que define el modelo
+// Luego le inyecto la conexion a sequelize
 module.exports = (sequelize) => {
-  // defino el modelo
+  
   sequelize.define('activity', {
     id: {
         type: DataTypes.INTEGER,
@@ -14,10 +14,10 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING
     },
     difficulty: {   // ENUM
-        type: DataTypes.INTEGER     // ¿ PUEDO PONER TINYINT ? TIENE QUE SER ENTRE 1 Y 5..
+        type: DataTypes.INTEGER
       },
     duration: {
-        type: DataTypes.TEXT       // ¿ QUÉ FORMATO TIENE LA DURACIÓN ?
+        type: DataTypes.TEXT
     },
     season: {
         type: DataTypes.STRING

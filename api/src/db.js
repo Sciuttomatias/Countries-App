@@ -4,9 +4,7 @@ const { COUNTRIES_URL } = require('../constants');
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
-const {
-  DB_USER, DB_PASSWORD, DB_HOST,
-} = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/countries`, {
   logging: false, // set to console.log to see the raw SQL queries
@@ -23,25 +21,22 @@ fs.readdirSync(path.join(__dirname, '/models'))
     modelDefiners.push(require(path.join(__dirname, '/models', file)));
   });
 
-// Injectamos la conexion (sequelize) a todos los modelos
+// Inyecto la conexión (sequelize) a todos los modelos
 modelDefiners.forEach(model => model(sequelize));
-// Capitalizamos los nombres de los modelos ie: product => Product
+// Capitalizo los nombres de los modelos ie: product => Product
 let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
-// Para relacionarlos hacemos un destructuring
+// Para relacionarlos, hago un destructuring
 const { Country, Activity } = sequelize.models;
 
-// Aca vendrian las relaciones
-// Product.hasMany(Reviews);
+/*--------- Relaciones de sequelize entre modelos ---------------- */
+Country.belongsToMany(Activity, {through: "country_activity"});
+Activity.belongsToMany(Country, {through: "country_activity"});
 
-Country.belongsToMany(Activity, {through: "country_activity"});       // Esto me esta creando la tabla intermedia?
-Activity.belongsToMany(Country, {through: "country_activity"});       // ¿Cómo funciona la creación de las keys?
-
-// APENAS SE INICIA EL SERVIDOR. AGREGO TOODS LOS COUNTRIES A MI DB
-
+/*-- Apenas se inicia el servidor, me traigo todo de la API EXTERNA y populo mi DB -- */
 try{
   axios.get(COUNTRIES_URL)
   .then((result) => {
@@ -60,16 +55,16 @@ try{
           countries.push(country);
       }
       Country.bulkCreate(countries)
-      .then((response) => {
+      .then((res) => {
           console.log("Se inyectaron los countries a mi Base de Datos!");
       })
   })
-
 } catch (e){
   console.log("No se pudo realizar la petición HTTP correctamente.." + e)
 }
 
+
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
-  conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
+  conn: sequelize,     // para importar la conexión { conn } = require('./db.js');
 };

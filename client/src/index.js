@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';  // TENGO EL STORE EN TODOS MIS COMPONENTES
-import store from './store/index';     // TRAER EL STORE PARA USARLO EN TODOS LOS COMPONENTES
-import './index.css';
+import { Provider } from 'react-redux';// Tengo el store en todos mis componentes
+import store from './store/index';     // Traigo el store para usarlo en todos mis componentes
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>

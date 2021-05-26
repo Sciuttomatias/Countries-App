@@ -2,7 +2,6 @@ import React from 'react'
 import { Route } from "react-router-dom";
 import Landing from './components/Landing/Landing';
 import Home from './components/Home/Home';
-import Navbar from './components/Home/Navbar/Navbar';
 import CountryDetail from './components/CountryDetail/CountryDetail';
 import AddActivity from './components/AddActivity/AddActivity';
 import {useSelector} from 'react-redux';
