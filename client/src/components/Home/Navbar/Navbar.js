@@ -42,7 +42,7 @@ function Navbar({onSearch}) {
         <NavLink to="/addActivity" className="add-activity">Add Activity</NavLink>
         <li className="dropdown"><a href="#" className="dropbtn">Filter by..</a>
           <ul className="subMenu">
-            <li><a href="#">Activities</a>
+            <li><a className="activities-continent" href="#">Activities</a>
               <ul className="superSubMenu">
                 {
                   activities && activities.map(activity => {
@@ -51,7 +51,7 @@ function Navbar({onSearch}) {
                 }
               </ul>
             </li>
-            <li><a href="#">Continent</a>
+            <li><a className="activities-continent" href="#">Continent</a>
               <ul className="superSubMenu">
                   <li><button key={1} value="Africa" onClick={(e)=>onClick(e)}>Africa</button></li>
                   <li><button key={2} value="Americas" onClick={(e)=>onClick(e)}>America</button></li>

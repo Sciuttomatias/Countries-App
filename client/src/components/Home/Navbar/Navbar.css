@@ -38,6 +38,10 @@ ul, ol {
 .nav li:hover > ul {
   display: block;
 }
+.nav li ul:hover {
+  color: skyblue;
+}
+
 
 .nav li ul li {
   position: relative;
@@ -67,22 +71,22 @@ ul li button {
   cursor: pointer;
 }
 
-ul li button {
-  background:none;
+ul li a {   /* filter by */
   border:none;
-  margin:0;
-  padding:0;
+  margin-top: 1px;
+  padding :0;
   cursor: pointer;
 }
 
 .superSubMenu button {
   width: 100px;
-  margin-left: 135px;
-  margin-top: 0;
+  margin-left: 142px;
+  margin-top: 1px;
   color: black;
   font-weight: bolder;
   background: skyblue;
 }
+
 
 .add-activity {
   margin-left: -120px;
@@ -92,11 +96,13 @@ ul li button {
   background: skyblue;
 }
 
-li ul li button {
+li ul li button {   /* order by */
+  margin-top: 1px;
   color: black;
   font-weight: bolder;
   background: skyblue;
   text-decoration: none;
+  width: 140px;
   padding: 10px 15px;
   display: block;
 }
