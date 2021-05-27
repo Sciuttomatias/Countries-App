@@ -4,7 +4,7 @@ import './Landing.css';
 function Landing() {
   return (
     <div className="container">
-      <h1>Henry Countries</h1>
+      <h1 className="title-landing">Henry Countries</h1>
         <Link to="/countries">
             <button className="btn-landing" type="button">Home</button>
         </Link>

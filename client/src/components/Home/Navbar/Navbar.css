@@ -1,84 +1,102 @@
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 10%;
-    background-color: skyblue;
+ul, ol {
+  list-style: none;
+}
+
+.nav {
+  margin: auto;
+  width: 864px;
+  height: 80px;
+  font-family: Arial, Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 19.7%;
+  background-color: skyblue;
+}
+
+.nav li {
+  align-content: center;
+}
+
+.nav li a {
+  background:none;
+  color: black;
+  font-weight: bolder;
+  background: skyblue;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: block;
+}
+
+.nav li ul {
+  display: none;
+  position: absolute;
+  
+}
+
+.nav li:hover > ul {
+  display: block;
+}
+
+.nav li ul li {
+  position: relative;
+}
+
+.nav li ul li ul {
+  right: -100px;
+  top: 10px;
+  left: -77px;
+}
+
+.nav ul li ul li a {
+  left: 0px;
 }
 
 .logo {
-    width: 20%;
-    cursor: pointer;
+  width: 25%;
+  cursor: pointer;
+  margin-left: -70px;
 }
 
-.logo-link {
-    cursor: pointer;
-    color: white;
+ul li button {
+  background:none;
+  border:none;
+  margin:0;
+  padding:0;
+  cursor: pointer;
 }
 
-.mainMenu {
-  flex-direction: row;
-  align-items: center;
-  padding-right: 280px;
+ul li button {
+  background:none;
+  border:none;
+  margin:0;
+  padding:0;
+  cursor: pointer;
 }
 
-.mainMenu li {
-    display: inline-block;
-    padding: 0px 20px;
-    text-decoration: none;
+.superSubMenu button {
+  width: 100px;
+  margin-left: 135px;
+  margin-top: 0;
+  color: black;
+  font-weight: bolder;
+  background: skyblue;
 }
 
-li {
-    text-decoration: none;
+.add-activity {
+  margin-left: -120px;
+  text-decoration: none;
+  color: black;
+  font-weight: bolder;
+  background: skyblue;
 }
 
-a {
-    font-weight: 300;
-    font-size: 16px;
-    text-decoration: none;
+li ul li button {
+  color: black;
+  font-weight: bolder;
+  background: skyblue;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: block;
 }
-
-.dropbtn {
-    background-color:skyblue;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .subMenu a:hover {background-color: #f1f1f1}
-
-  .dropdown:hover .subMenu,nav .subMenu>li:hover>.superSubMenu {
-    display: block;
-  }
-  
-  .dropdown:hover .dropbtn {
-    background-color: skyblue;
-  }
-
-  .dropdown-submenu {
-    display: inline-block;
-  }
-
-  nav .subMenu,nav .superSubMenu {
-    position: absolute;
-    display: none;
-    left: 0;
-  }
-
-  nav .subMenu li {
-    position: relative;
-    top: 13px;
-  }
-
-  nav .superSubMenu {
-    top: 0;
-    right: 0;
-    transform: translate(100%, 0);
-  }

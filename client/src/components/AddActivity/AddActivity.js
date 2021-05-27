@@ -17,8 +17,19 @@ function AddActivity() {
 
   const history = useHistory();
   
-  const countries = useSelector(store => store.countries);
-  
+  let countries = useSelector(store => store.countries);
+
+  countries = countries.sort(function (a, b) {
+    if (a.name > b.name) {
+      return 1;
+    }
+    if (a.name < b.name) {
+      return -1;
+    }
+    // a must be equal to b
+    return 0;
+  });
+
   const fetchCountries = () => { // Para poder usar loc countries en el dropdown menu
     try{
       dispatch(getCountries());

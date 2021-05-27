@@ -8,21 +8,18 @@
     flex-direction: column;
 }
   
-h1 {
-    color: skyblue;
+.title-landing {
+    color: rgb(49, 158, 240);
     font-size: 3em;
-}
-
-.text {
-    color: rgb(96, 156, 247);
-    font-size: 1em;
-    font-weight: 300;
+    font-weight: 900;
+    text-decoration: none;
 }
 
 .btn-landing{
-    size: 20px;
+    size: 30px;
     color: white;
-    background: skyblue;
+    font-weight: 700;
+    background: rgb(49, 158, 240);
     border-radius: 5px;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     width: 80px;
