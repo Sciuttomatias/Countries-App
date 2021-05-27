@@ -6,7 +6,9 @@
   flex-direction: column;
 }
 
-h1 {
+.home-title {
+  color: skyblue;
+  font-size: 3em;
   justify-content: center;
   text-decoration: underline;
   font-style: italic;
