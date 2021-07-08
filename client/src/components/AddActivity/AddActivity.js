@@ -9,7 +9,7 @@ import './AddActivity.css';
 
 
 function AddActivity() {
-
+  console.log("lalala");
   
   const [activity, setActivity] = useState({ name: "", difficulty: 1, duration: 0, season: "", countries: [] });
   
